@@ -1,0 +1,17 @@
+{
+  "name": "seed",
+  "version": "0.1.0",
+  "scripts": {
+    "tsc": "tsc -p src -w",
+    "start": "node src/server/app.js"
+  },
+  "dependencies": {
+    "angular2": "2.0.0-alpha.46",
+    "es6-shim": "^0.33.13",
+    "express": "^4.13.3",
+    "systemjs": "0.19.6"
+  },
+  "devDependencies": {
+    "typescript": "^1.6.2"
+  }
+}

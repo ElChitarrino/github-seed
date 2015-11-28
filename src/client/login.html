@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/"/>
+  <script src="./node_modules/es6-shim/es6-shim.js"></script>
+  <script src="./node_modules/systemjs/dist/system.src.js"></script>
+  <script src="./node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="./node_modules/angular2/bundles/router.dev.js"></script>
+  <script>
+  System.config({
+    baseURL: "/"
+  });
+  System.import('./app/login.js').catch(console.log.bind(console));
+  </script>
+</head>
+
+<body>
+  <app></app>
+</body>
+
+</html>

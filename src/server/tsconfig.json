@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true
+    },
+    "filesGlob": [
+        "../../typings/tsd.d.ts",
+        "./**/*.ts",
+        "./*.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
+}
