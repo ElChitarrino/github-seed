@@ -1,3 +1,5 @@
+///<reference path="../../typings/tsd.d.ts"/>
+
 import * as http from 'http';
 import * as path from 'path';
 import * as express from 'express';
