@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "tsc": "tsc -p src -w",
-    "start": "node src/server/app.js"
+    "start": "node src/server/app.js",
+    "lint": "./node_modules/.bin/gulp tslint"
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.46",
@@ -12,6 +13,9 @@
     "systemjs": "0.19.6"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-tslint": "^4.0.1",
+    "tslint": "^3.0.0",
     "typescript": "^1.6.2"
   }
 }
