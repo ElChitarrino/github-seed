@@ -8,13 +8,15 @@ gulp.task('tslint', function(){
         .pipe(tslint.report('verbose'));
 });
 
-gulp.task('build', ['compile'], function () {
-    return gulp.src('./src/**/*.html')
+gulp.task('copy', function () {
+    return gulp.src(['./src/**/*.html', './src/**/*.ts'])
         .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('compile', function(){
-    gulp.src(['src/**/*.ts'])
+    gulp.src(['src/**/*.ts'], { base: 'src' })
         .pipe(tsc(require('./src/tsconfig.json').compilerOptions))
         .pipe(gulp.dest('./dist'));
 });
+
+gulp.task('build', ['copy', 'compile']);

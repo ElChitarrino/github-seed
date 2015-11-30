@@ -7,6 +7,7 @@ import * as express from 'express';
 let app = express();
 
 app.use('/', express.static(path.join(__dirname, '..', 'client')));
+app.use('/', express.static(path.join(__dirname, '..', '..', 'src', 'client')));
 app.use('/node_modules', express.static(path.join(__dirname, '..', '..', 'node_modules')));
 
 app.all('/*', function(req, res, next) {

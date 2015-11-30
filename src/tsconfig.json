@@ -8,8 +8,9 @@
         "removeComments": false,
         "noImplicitAny": false,
         "suppressImplicitAnyIndexErrors": true,
-        "rootDir": "src",
-        "outDir": "../dist"
+        "rootDir": "/",
+        "outDir": "../dist",
+        "sourceRoot": "/"
     },
     "filesGlob": [
         "../typings/tsd.d.ts",
