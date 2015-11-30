@@ -1,7 +1,6 @@
 .DS_Store
 typings
-src/**/*.js
-src/**/*.map
+dist
 node_modules
 jspm_packages
 bower_components

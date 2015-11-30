@@ -2,10 +2,9 @@
   "name": "seed",
   "version": "0.1.0",
   "scripts": {
-    "tsc-client": "tsc -p ./src/client/  -w",
-    "tsc-server": "tsc -p ./src/server/  -w",
-    "start": "node src/server/app.js",
-    "lint": "./node_modules/.bin/gulp tslint"
+    "lint": "./node_modules/.bin/gulp tslint",
+    "build": "./node_modules/.bin/gulp build",
+    "start": "node dist/server/app.js"
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.46",
@@ -15,6 +14,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-tsc": "^1.1.4",
     "gulp-tslint": "^4.0.1",
     "tslint": "^3.0.0",
     "typescript": "^1.6.2"
