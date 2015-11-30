@@ -3,5 +3,5 @@
 * get node dependencies `npm install`
 * get types via `npm install -g tsd` and `tsd install`
 * linting via `npm run lint`
-* build/ compile via `npm run build`
+* compile via `npm run compile`
 * run the app via  `npm start`
