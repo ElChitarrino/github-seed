@@ -1,7 +1,7 @@
 # angular 2 seed
 
-* `npm install`
-* `npm install -g tsd`
-* `tsd install`
-* run the TypeScript compiler and watch for changes `npm run tsc`
-* launch the app in the browser `npm start`
+* get node dependencies `npm install`
+* get types via `npm install -g tsd` and `tsd install`
+* linting via `npm run lint`
+* build/ compile via `npm run build`
+* run the app via  `npm start`
