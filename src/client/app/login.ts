@@ -5,4 +5,3 @@ import {bootstrap, Component} from 'angular2/angular2';
 })
 class AppComponent { }
 bootstrap(AppComponent);
-console;

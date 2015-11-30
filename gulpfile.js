@@ -8,10 +8,10 @@ gulp.task('tslint', function(){
         .pipe(tslint.report('verbose'));
 });
 
-gulp.task('copy', function () {
-    return gulp.src(['./src/**/*.html', './src/**/*.ts'])
-        .pipe(gulp.dest('./dist'));
-});
+//gulp.task('copy', function () {
+//    return gulp.src(['./src/**/*.html', './src/**/*.ts'])
+        //.pipe(gulp.dest('./dist'));
+//});
 
 gulp.task('compile', function(){
     gulp.src(['src/**/*.ts'], { base: 'src' })
@@ -19,4 +19,4 @@ gulp.task('compile', function(){
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build', ['copy', 'compile']);
+//gulp.task('build', ['copy', 'compile']);
