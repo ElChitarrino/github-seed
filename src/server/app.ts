@@ -6,19 +6,22 @@ import * as express from 'express';
 
 let app = express();
 
-app.use('/client', express.static(path.join(__dirname, '..', 'client')));
-app.use('/client', express.static(path.join(__dirname, '..', '..', 'src', 'client')));
-app.use('/node_modules', express.static(path.join(__dirname, '..', '..', 'node_modules')));
+const SRC = '../../src/client';
+const DIST = '../../dist/client';
+const NPM = '../../node_modules';
 
-app.all('/*', function(req, res, next) {
+app.use('/client', express.static(path.join(__dirname, DIST)));
+app.use('/client', express.static(path.join(__dirname, SRC)));
+app.use('/node_modules', express.static(path.join(__dirname, NPM)));
+
+app.get('/', function(req, res, next) {
     let filePath;
     if (req.user) {
-        filePath = path.join(__dirname, '..', '..', 'src', 'client', 'main.html');
+        filePath = path.join(__dirname, SRC, 'main.html');
     }
     else {
-        filePath = path.join(__dirname, '..', '..', 'src', 'client', 'login.html');
+        filePath = path.join(__dirname, SRC, 'login.html');
     }
-    res.setHeader('Last-Modified', (new Date()).toUTCString());
     res.status(200).sendFile(filePath);
 });
 
