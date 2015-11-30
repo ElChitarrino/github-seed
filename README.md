@@ -1,4 +1,4 @@
-# github app seed using angular 2, express and typescript
+# github app using angular 2 & express
 
 * get node dependencies `npm install`
 * get types via `npm install -g tsd` and `tsd install`
