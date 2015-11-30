@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var tslint = require('gulp-tslint');
 var tsc = require('gulp-tsc');
+var clean = require('gulp-clean');
+var tscOptions = require('./src/tsconfig.json').compilerOptions;
 
 gulp.task('tslint', function(){
       return gulp.src('src/**/*.ts')
@@ -8,15 +10,10 @@ gulp.task('tslint', function(){
         .pipe(tslint.report('verbose'));
 });
 
-//gulp.task('copy', function () {
-//    return gulp.src(['./src/**/*.html', './src/**/*.ts'])
-        //.pipe(gulp.dest('./dist'));
-//});
-
 gulp.task('compile', function(){
+    gulp.src('dist')
+        .pipe(clean());
     gulp.src(['src/**/*.ts'], { base: 'src' })
-        .pipe(tsc(require('./src/tsconfig.json').compilerOptions))
+        .pipe(tsc(tscOptions))
         .pipe(gulp.dest('./dist'));
 });
-
-//gulp.task('build', ['copy', 'compile']);
