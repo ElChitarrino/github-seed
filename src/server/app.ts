@@ -1,8 +1,3 @@
-const SRC = '../../src/client';
-const DIST = '../../dist/client';
-const NPM = '../../node_modules';
-const CERT = '../../certs';
-
 // import with type defitions
 import * as http from 'http';
 import * as path from 'path';
@@ -17,7 +12,13 @@ let sslRootCas = require('ssl-root-cas');
 let passportGithub = require('passport-github');
 let merge = require('merge');
 
-// start express
+// constants
+const SRC = '../../src/client';
+const DIST = '../../dist/client';
+const NPM = '../../node_modules';
+const CERT = '../../certs';
+
+// init express
 let app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -59,8 +60,6 @@ let passportOptions = {
 };
 
 passport.use( new passportGithub.Strategy(passportOptions, function(accessToken, refreshToken, profile, done) {
-    console.log(profile);
-    console.log(accessToken);
     done(null, merge(profile._json, { token: accessToken }));
 }));
 
