@@ -12,7 +12,7 @@ gulp.task('tslint', function(){
 gulp.task('compile', function(){
 
     // sourceRoot is not supported in this gulp tasks
-    // apart from that this should resemble jsconfig.json
+    // apart from that this should resemble tsconfig.json
     var tscOptions = {
         "target": "ES5",
         "module": "commonjs",
