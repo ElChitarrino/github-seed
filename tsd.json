@@ -16,6 +16,21 @@
     },
     "mime/mime.d.ts": {
       "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "passport/passport.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "express-session/express-session.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
+    },
+    "angular2/angular2.d.ts": {
+      "commit": "7cf81b9947a9829ed344b00ce7693ceacde9b8d5"
     }
   }
 }

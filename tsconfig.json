@@ -8,13 +8,16 @@
         "removeComments": false,
         "noImplicitAny": false,
         "suppressImplicitAnyIndexErrors": true,
-        "rootDir": "./",
-        "outDir": "../dist",
-        "sourceRoot": "/"
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "sourceRoot": "/",
+        "moduleResolution": "node"
     },
     "filesGlob": [
-        "../typings/tsd.d.ts",
-        "./**/*.ts"
+        "./typings/tsd.d.ts",
+        "./src/**/*.d.ts",
+        "./src/**/*.ts",
+        "./node_modules/angular2/angular2.d.ts"
     ],
     "atom": {
         "rewriteTsconfig": false

@@ -1,8 +1,7 @@
 var gulp = require('gulp');
 var tslint = require('gulp-tslint');
-var tsc = require('gulp-tsc');
+var tsc = require('gulp-typescript');
 var clean = require('gulp-clean');
-var tscOptions = require('./src/tsconfig.json').compilerOptions;
 
 gulp.task('tslint', function(){
       return gulp.src('src/**/*.ts')
@@ -11,9 +10,25 @@ gulp.task('tslint', function(){
 });
 
 gulp.task('compile', function(){
-    gulp.src('dist')
+
+    var tscOptions = {
+        "target": "ES5",
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "moduleResolution": "node"
+    };
+
+    gulp.src('./dist')
         .pipe(clean());
-    gulp.src(['src/**/*.ts'], { base: 'src' })
-        .pipe(tsc(tscOptions))
-        .pipe(gulp.dest('./dist'));
+
+    var tsResult = gulp.src(['./typings/tsd.d.ts','./src/**/*.ts'])
+        .pipe(tsc(tscOptions));
+
+    return tsResult.js.pipe(gulp.dest('./dist'));
 });
