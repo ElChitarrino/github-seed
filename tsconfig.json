@@ -16,8 +16,7 @@
     "filesGlob": [
         "./typings/tsd.d.ts",
         "./src/**/*.d.ts",
-        "./src/**/*.ts",
-        "./node_modules/angular2/angular2.d.ts"
+        "./src/**/*.ts"
     ],
     "atom": {
         "rewriteTsconfig": false
