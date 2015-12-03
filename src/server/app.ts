@@ -11,6 +11,8 @@ import * as passport from 'passport';
 let sslRootCas = require('ssl-root-cas');
 let passportGithub = require('passport-github');
 let merge = require('merge');
+let expressSession = require('express-session');
+let githubApi = require('github');
 
 // constants
 const SRC = '../../src/client';
@@ -22,8 +24,18 @@ const CERT = '../../certs';
 let app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
+let cookieSession = expressSession({
+    secret: 'SECRET',
+    saveUninitialized: true,
+    resave: false,
+    cookie: {
+        maxAge: 20 * 365 * 24 * 60 * 60 * 1000
+    }
+});
+app.use(cookieSession);
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 // serve static files
 app.use('/client', express.static(path.join(__dirname, DIST)));
@@ -38,25 +50,13 @@ certs.forEach(function (cert) {
     }
 });
 
-// serve page if user is logged in or not
-app.get('/', function(req, res, next) {
-    let filePath;
-    if (req.user) {
-        filePath = path.join(__dirname, SRC, 'main.html');
-    }
-    else {
-        filePath = path.join(__dirname, SRC, 'login.html');
-    }
-    res.status(200).sendFile(filePath);
-});
-
 // passport setup
 let passportOptions = {
     clientID: process.env.GITHUB_CLIENT,
     clientSecret: process.env.GITHUB_SECRET,
     authorizationURL: process.env.GITHUB_PROTOCOL + '://' + process.env.GITHUB_HOST + '/login/oauth/authorize',
     tokenURL: process.env.GITHUB_PROTOCOL + '://' + process.env.GITHUB_HOST + '/login/oauth/access_token',
-    userProfileURL: process.env.GITHUB_PROTOCOL + '://' + process.env.GITHUB_API_BASE + '/user'
+    userProfileURL: process.env.GITHUB_PROTOCOL + '://' + process.env.GITHUB_API_BASE + process.env.GITHUB_API_PATH + '/user'
 };
 
 passport.use( new passportGithub.Strategy(passportOptions, function(accessToken, refreshToken, profile, done) {
@@ -93,6 +93,37 @@ app.get('/logout', function(req, res, next) {
         }
     }
 );
+
+// serve page if user is logged in or not
+app.get('/', function(req, res, next) {
+    let filePath;
+    if (req.user) {
+        filePath = path.join(__dirname, SRC, 'main.html');
+    }
+    else {
+        filePath = path.join(__dirname, SRC, 'login.html');
+    }
+    res.status(200).sendFile(filePath);
+});
+
+app.get('/following', function(req, res){
+
+    let github = new githubApi({
+        version: '3.0.0',
+        protocol: process.env.GITHUB_PROTOCOL,
+        host: process.env.GITHUB_API_BASE,
+        pathPrefix: process.env.GITHUB_API_PATH,
+        timeout: 5000
+    });
+    github.authenticate({
+        type: 'oauth',
+        token: req.user.token
+    });
+
+    github.user.getFollowing({ }, function(err, ghRes) {
+        res.status(200).send(ghRes);
+    });
+});
 
 // start server
 let server = http.createServer(app);

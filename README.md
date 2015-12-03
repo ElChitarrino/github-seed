@@ -6,4 +6,4 @@
 * optionally put certificates into `/certs`
 * linting via `npm run lint`
 * compile via `npm run compile`
-* run the app via  `npm start`
+* run the app via  `source .env && npm start`

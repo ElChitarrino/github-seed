@@ -1,7 +1,22 @@
-import {bootstrap, Component} from 'angular2/angular2';
+import {bootstrap, Component, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
 @Component({
     selector: 'app',
-    template: '<h1>Main App</h1>',
+    directives: [CORE_DIRECTIVES],
+    viewProviders: [HTTP_PROVIDERS],
+    templateUrl: './client/app/main.html',
+    styleUrls: ['./client/app/main.css']
 })
-class AppComponent { }
-bootstrap(AppComponent);
+class AppComponent {
+    public following: Object;
+
+    constructor(http: Http) {
+        http.get('/following')
+            .map((res: Response) => res.json())
+            .subscribe(
+                data => { this.following = data; console.log(this.following); }
+            );
+    }
+
+}
+bootstrap(AppComponent, []);

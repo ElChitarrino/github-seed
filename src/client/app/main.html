@@ -1,0 +1,12 @@
+<div class="jumbotron">
+    <div class="container">
+        <p><a class="btn btn-primary btn-lg" href="/logout" target="_self" role="button">Logout</a></p>
+        <h3>People following you</h3>
+        <div class="container">
+          <div *ng-for="#follower of following">
+            <img src="{{follower.avatar_url}}" class="user_image">
+            {{follower.login}}
+          </div>
+        </div>
+    </div>
+</div>

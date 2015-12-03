@@ -9,10 +9,12 @@
   "dependencies": {
     "angular2": "2.0.0-alpha.46",
     "body-parser": "^1.14.1",
+    "bootstrap": "^3.3.6",
     "cookie-parser": "^1.4.0",
     "es6-shim": "^0.33.13",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
+    "github": "^0.2.4",
     "merge": "^1.2.0",
     "passport": "^0.3.2",
     "passport-github": "^1.0.0",
