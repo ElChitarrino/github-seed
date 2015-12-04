@@ -1,14 +1,12 @@
 // import with type defitions
 import * as http from 'http';
 import * as path from 'path';
-import * as fs from 'fs';
 import * as express from 'express';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as passport from 'passport';
 
 // no type definitions available
-let sslRootCas = require('ssl-root-cas');
 let passportGithub = require('passport-github');
 let merge = require('merge');
 let expressSession = require('express-session');
@@ -18,7 +16,6 @@ let githubApi = require('github');
 const SRC = '../../src/client';
 const DIST = '../../dist/client';
 const NPM = '../../node_modules';
-const CERT = '../../certs';
 
 // init express
 let app = express();
@@ -43,12 +40,10 @@ app.use('/client', express.static(path.join(__dirname, SRC)));
 app.use('/node_modules', express.static(path.join(__dirname, NPM)));
 
 // add certificates if needed
-let certs = fs.readdirSync(path.join(__dirname, CERT));
-certs.forEach(function (cert) {
-    if (path.extname(cert) === '.crt') {
-        sslRootCas.inject().addFile(path.join(__dirname, CERT, cert));
-    }
-});
+let certificateLoader: ICertificateLoader = require('./certs');
+certificateLoader.setPath('../../certs');
+certificateLoader.loadCertificates();
+
 
 // passport setup
 let passportOptions = {
