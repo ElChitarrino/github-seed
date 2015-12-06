@@ -1,4 +1,4 @@
-# github app using angular 2 & express
+# GitHub App using MEA2N stack
 
 * get node dependencies `npm install`
 * get types via `npm install -g tsd` and `tsd install`
