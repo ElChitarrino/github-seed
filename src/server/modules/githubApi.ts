@@ -19,7 +19,7 @@ class GitHubApi implements IGitHubApi {
             token: req.user.token
         });
 
-        this.github.user.getFollowing({ }, function(err, ghRes) {
+        this.github.user.getFollowing({}, ghRes => {
             res.status(200).send(ghRes);
         });
     }
