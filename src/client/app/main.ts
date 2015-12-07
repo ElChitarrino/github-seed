@@ -1,5 +1,6 @@
 import {bootstrap, Component, CORE_DIRECTIVES} from 'angular2/angular2';
 import {Http, Response, HTTP_PROVIDERS} from 'angular2/http';
+declare var io: any;
 @Component({
     selector: 'app',
     directives: [CORE_DIRECTIVES],
@@ -17,6 +18,5 @@ class AppComponent {
                 data => { this.following = data; console.log(this.following); }
             );
     }
-
 }
 bootstrap(AppComponent, []);

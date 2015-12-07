@@ -2,23 +2,24 @@
 <html>
 
 <head>
-  <base href="/"/>
-  <script src="./node_modules/es6-shim/es6-shim.js"></script>
-  <script src="./node_modules/systemjs/dist/system.src.js"></script>
-  <script src="./node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script src="./node_modules/angular2/bundles/http.dev.js"></script>
-  <script src="./node_modules/angular2/bundles/router.dev.js"></script>
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
-  <script>
-  System.config({
-    baseURL: "/"
-  });
-  System.import('./client/app/main.js').catch(console.log.bind(console));
-  </script>
+    <base href="/"/>
+    <script src="./node_modules/es6-shim/es6-shim.js"></script>
+    <script src="./node_modules/systemjs/dist/system.src.js"></script>
+    <script src="./node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="./node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="./node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <script>
+    System.config({
+        baseURL: "/"
+    });
+    System.import('./client/app/main.js').catch(console.log.bind(console));
+    </script>
 </head>
 
 <body>
-  <app></app>
+    <app></app>
 </body>
 
 </html>

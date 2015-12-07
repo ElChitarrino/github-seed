@@ -1,3 +1,4 @@
 interface ISession {
-    get();
+    getExpressSession();
+    getSession(mongooseConnection, mongoStore);
 }
