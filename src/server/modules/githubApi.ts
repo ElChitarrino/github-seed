@@ -13,7 +13,16 @@ class GitHubApi implements IGitHubApi {
         });
     }
 
-    public following(req, res) {
+    public call(req, res) {
+        if (req.url === '/api/github/following') {
+            return this.following(req, res);
+        }
+        else {
+            res.status(400).send('not defined');
+        }
+    }
+
+    private following(req, res) {
         this.github.authenticate({
             type: 'oauth',
             token: req.user.token

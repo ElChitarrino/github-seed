@@ -2,10 +2,10 @@
     <div class="container">
         <p><a class="btn btn-primary btn-lg" href="/auth/logout" target="_self" role="button">Logout</a></p>
         <h3>People you are following</h3>
-        <div class="container">
-          <div *ng-for="#follower of following">
-            <img src="{{follower.avatar_url}}" class="user_image">
-            {{follower.login}}
+        <div class="row">
+          <div *ng-for="#user of users" class="column">
+            <img src="{{user.avatar_url}}" class="user_image">
+            {{user.login}} - {{user.online}}
           </div>
         </div>
     </div>

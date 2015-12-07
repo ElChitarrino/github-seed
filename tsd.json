@@ -40,6 +40,9 @@
     },
     "connect-mongo/connect-mongo.d.ts": {
       "commit": "8cd79728efa7652d934b2703feeb68bb4802aebb"
+    },
+    "mongodb/mongodb.d.ts": {
+      "commit": "8cd79728efa7652d934b2703feeb68bb4802aebb"
     }
   }
 }

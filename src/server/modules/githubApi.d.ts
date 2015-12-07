@@ -1,3 +1,3 @@
 interface IGitHubApi {
-    following(req: any, res: any);
+    call(req: any, res: any);
 }
