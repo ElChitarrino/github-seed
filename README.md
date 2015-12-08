@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thojansen/github-seed.svg?branch=master)](https://travis-ci.org/thojansen/github-seed)
+
 # GitHub App using MEA2N stack
 
 * get node dependencies `npm install`
