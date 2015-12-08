@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var tslint = require('gulp-tslint');
 var tsc = require('gulp-typescript');
 var clean = require('gulp-clean');
+var karma = require('karma').Server;
+var join = require('path').join;
 
 gulp.task('tslint', function(){
       return gulp.src('src/**/*.ts')
@@ -33,4 +35,11 @@ gulp.task('compile', function(){
         .pipe(tsc(tscOptions));
 
     return tsResult.js.pipe(gulp.dest('./dist'));
+});
+
+gulp.task('test', function (done) {
+    karma.start({
+      configFile: join(process.cwd(), 'karma.conf.js'),
+      singleRun: true
+    }, done);
 });
