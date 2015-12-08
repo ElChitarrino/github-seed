@@ -9,7 +9,8 @@ class GitHubApi implements IGitHubApi {
             protocol: process.env.GITHUB_PROTOCOL,
             host: process.env.GITHUB_API_BASE,
             pathPrefix: process.env.GITHUB_API_PATH,
-            timeout: 5000
+            timeout: 5000,
+            proxy: null // not supported in oauth flow
         });
     }
 
@@ -32,6 +33,7 @@ class GitHubApi implements IGitHubApi {
             err ? res.status(400).send(err) : res.status(200).send(ghRes);
         });
     }
+
 }
 
 export = new GitHubApi;
