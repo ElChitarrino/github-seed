@@ -1,0 +1,12 @@
+language: node_js
+cache:
+  directories:
+  - node_modules
+install:
+  - npm install
+  - npm install -g tsd
+  - tsd install
+  - npm run compile
+scripts:
+  - npm run lint
+  - npm test
